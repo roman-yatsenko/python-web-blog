@@ -16,7 +16,7 @@
                 {% endblock content %}
             </div>
             <div class="col-md-4 p-2 bg-body-secondary" id="sidebar">
-                <h2>My blog</h2>
+                <h2><a href='{% url "blog:post_list" %}' class="text-decoration-none">My blog</a></h2>
                 <p>This is my blog</p>
             </div>
         </div>
