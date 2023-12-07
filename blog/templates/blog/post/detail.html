@@ -13,4 +13,25 @@
             Share this post
         </a>
     </p>
+    {% with total_comments=comments.count %}
+    <h2>
+        {{ total_comments }} comment{{ total_comments|pluralize }}
+    </h2>
+    {% endwith %}
+    {% for comment in comments %}
+    <div class="comment border-bottom border-1 mb-2">
+        <p class="info fw-bold">
+            #{{ forloop.counter }} by {{ comment.name }}
+        </p>
+        <div class="ms-5">
+            {{ comment.body|linebreaks }}
+        </div>
+        <p class="fw-light fst-italic text-end" style="font-size: 0.8rem;">
+            {{ comment.created }}
+        </p> 
+    </div>
+    {% empty %}
+    <p>There are no comments.</p>
+    {% endfor %}
+    {% include "blog/post/includes/comment_form.html" %}
 {% endblock content %}
