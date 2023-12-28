@@ -1,4 +1,5 @@
 {% load static %}
+{% load blog_tags %}
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
@@ -17,7 +18,18 @@
             </div>
             <div class="col-md-4 p-2 bg-body-secondary" id="sidebar">
                 <h2><a href='{% url "blog:post_list" %}' class="text-decoration-none">My blog</a></h2>
-                <p>This is my blog</p>
+                <p>This is my blog. I've published {% total_posts %} posts so far.</p>
+                <h3>Latest posts</h3>
+                {% show_latest_posts 3 %}
+                <h3>Most commented posts</h3>
+                {% get_most_commented_posts as most_commented_posts %}
+                <ul>
+                    {% for post in most_commented_posts %}
+                    <li>
+                        <a href="{{ post.get_absolute_url }}" class="text-decoration-none">{{ post.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
         <footer class="bg-warning bg-gradient mt-3 p-5 text-center text-primary rounded">

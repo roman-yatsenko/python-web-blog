@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -37,9 +38,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
     "blog",
     "crispy_forms",
     "crispy_bootstrap5",
+    "taggit",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
